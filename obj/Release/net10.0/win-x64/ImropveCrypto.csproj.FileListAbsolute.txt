@@ -236,3 +236,4 @@
 /Users/artemmihlin/Documents/Rider/ImropveCrypto/obj/Release/net10.0/win-x64/ImropveCrypto.pdb
 /Users/artemmihlin/Documents/Rider/ImropveCrypto/obj/Release/net10.0/win-x64/ImropveCrypto.genruntimeconfig.cache
 /Users/artemmihlin/Documents/Rider/ImropveCrypto/obj/Release/net10.0/win-x64/ref/ImropveCrypto.dll
+/Users/artemmihlin/Documents/Rider/ImropveCrypto/obj/Release/net10.0/win-x64/ImropveCrypto.sourcelink.json
