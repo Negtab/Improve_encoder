@@ -10,8 +10,7 @@ using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using ImropveCrypto.Models;
 using MsBox.Avalonia;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
+
 
 
 
@@ -19,8 +18,7 @@ namespace ImropveCrypto.Views;
 
 public partial class MainWindow : Window
 {
-    private MemoryStream? _encryptedStream;   // хранит зашифрованные данные после OpenFile
-    private string? _currentFilePath;         // путь к открытому файлу (необязательно)
+    private MemoryStream? _encryptedStream;   
 
     public MainWindow()
     {
@@ -29,31 +27,29 @@ public partial class MainWindow : Window
         EncryptedFileTextBlock.Text = "";
     }
 
-    // Преобразование байтов в битовую строку (только первые maxBytes)
     private static string BytesToBitsString(byte[] data, int maxBytes = 16)
     {
         int bytesToTake = Math.Min(data.Length, maxBytes);
         var sb = new StringBuilder(bytesToTake * 8);
+        
         for (int i = 0; i < bytesToTake; i++)
-        {
             sb.Append(Convert.ToString(data[i], 2).PadLeft(8, '0'));
-        }
+        
         if (data.Length > maxBytes)
             sb.Append("...");
+        
         return sb.ToString();
     }
 
-    // Проверка и парсинг начального состояния из TextEditor
     private byte[] ParseInitialState()
     {
         string text = BeginKeyTextBlock.Document?.Text ?? "";
-        // Удаляем все пробелы, переводы строк, оставляем только 0 и 1
         var bits = new List<char>();
+        
         foreach (char c in text)
-        {
             if (c == '0' || c == '1')
                 bits.Add(c);
-        }
+        
         if (bits.Count != 28)
             throw new Exception($"Начальное состояние должно содержать ровно 28 бит (0/1). Сейчас {bits.Count} бит.");
 
@@ -63,13 +59,11 @@ public partial class MainWindow : Window
         return state;
     }
 
-    // Показать первые 128 бит ключа (без изменения основного генератора)
     private async Task ShowKeyPreview(byte[] initialState)
     {
-        // Создаём временный LFSR для превью
         var tempCrypto = new Crypto(initialState);
-        byte[] keyPreview = tempCrypto.GenerateKeyBytes(16); // 16 байт = 128 бит
-        string bits = BytesToBitsString(keyPreview, 16);
+        byte[] keyPreview = tempCrypto.GenerateKeyBytes(16); 
+        string bits = BytesToBitsString(keyPreview);
         await Dispatcher.UIThread.InvokeAsync(() =>
         {
             GeneratedTextBlock.Document.Text = bits;
@@ -78,23 +72,19 @@ public partial class MainWindow : Window
 
     private async void OpenFileClick(object sender, RoutedEventArgs e)
     {
-        // Блокируем кнопки на время операции
         var openBtn = sender as Button;
         if (openBtn != null) openBtn.IsEnabled = false;
         SaveFileButton.IsEnabled = false;
 
         try
         {
-            // 1. Выбор файла
             var files = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
             {
                 Title = "Open file",
                 AllowMultiple = false
             });
             if (files.Count == 0) return;
-            _currentFilePath = files[0].Path.AbsolutePath;
-
-            // 2. Парсим начальное состояние
+            
             byte[] initialState;
             try
             {
@@ -106,18 +96,15 @@ public partial class MainWindow : Window
                 return;
             }
 
-            // 3. Показываем превью ключа (первые 128 бит)
             await ShowKeyPreview(initialState);
 
-            // 4. Создаём основной LFSR
             var crypto = new Crypto(initialState);
 
-            // 5. Открываем файл и готовим поток для зашифрованных данных
             await using var fileStream = await files[0].OpenReadAsync();
             long fileLength = fileStream.Length;
-            _encryptedStream = new MemoryStream((int)fileLength); // ёмкость под весь файл
+            _encryptedStream = new MemoryStream((int)fileLength); 
 
-            const int bufferSize = 8192; // 8 КБ на блок
+            const int bufferSize = 8192; 
             byte[] dataBuffer = new byte[bufferSize];
             byte[] encryptedBuffer = new byte[bufferSize];
 
@@ -131,17 +118,13 @@ public partial class MainWindow : Window
 
             while ((bytesRead = await fileStream.ReadAsync(dataBuffer, 0, bufferSize)) > 0)
             {
-                // Генерируем ключ для этого блока
                 byte[] keyBlock = crypto.GenerateKeyBytes(bytesRead);
 
-                // XOR
                 for (int i = 0; i < bytesRead; i++)
                     encryptedBuffer[i] = (byte)(dataBuffer[i] ^ keyBlock[i]);
 
-                // Сохраняем зашифрованный блок
                 await _encryptedStream.WriteAsync(encryptedBuffer, 0, bytesRead);
 
-                // Запоминаем первые 16 байт исходного и зашифрованного для отображения
                 if (firstBlock)
                 {
                     firstOriginalBytes = dataBuffer.Take(Math.Min(16, bytesRead)).ToArray();
@@ -154,12 +137,11 @@ public partial class MainWindow : Window
                 await Dispatcher.UIThread.InvokeAsync(() => ProgressBar.Value = progress);
             }
 
-            // Отображаем битовые строки
             string originalBits = firstOriginalBytes != null
-                ? BytesToBitsString(firstOriginalBytes, 16)
+                ? BytesToBitsString(firstOriginalBytes)
                 : "";
             string encryptedBits = firstEncryptedBytes != null
-                ? BytesToBitsString(firstEncryptedBytes, 16)
+                ? BytesToBitsString(firstEncryptedBytes)
                 : "";
 
             await Dispatcher.UIThread.InvokeAsync(() =>

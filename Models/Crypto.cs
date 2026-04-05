@@ -9,12 +9,9 @@ public class Crypto
     private int _bitsEmittedFromInitial;   // сколько бит из initialState уже выдано
     private bool _initialEmitted;          // флаг, что всё начальное состояние выдано
 
-    private readonly int _tap1 = 27; // старший бит (x^28)
-    private readonly int _tap2 = 3;  // x^4
-
-    /// <summary>
-    /// Инициализирует LFSR начальным состоянием (массив из 28 байт, каждый 0 или 1).
-    /// </summary>
+    private readonly int _tap1 = 27;
+    private readonly int _tap2 = 3;  
+    
     public Crypto(byte[] initialState)
     {
         if (initialState == null || initialState.Length != 28)
@@ -30,10 +27,6 @@ public class Crypto
         _bitsEmittedFromInitial = 0;
         _initialEmitted = false;
     }
-
-    /// <summary>
-    /// Генерирует один бит, сдвигает регистр и возвращает новый бит.
-    /// </summary>
     private bool Shift()
     {
         bool feedback = _lfsr[_tap1] ^ _lfsr[_tap2];
@@ -42,10 +35,7 @@ public class Crypto
         _lfsr[0] = feedback;
         return feedback;
     }
-
-    /// <summary>
-    /// Возвращает следующий бит ключа (сначала из начального состояния, затем из LFSR).
-    /// </summary>
+    
     private bool NextBit()
     {
         if (!_initialEmitted)
@@ -63,12 +53,9 @@ public class Crypto
                 _initialEmitted = true;
             }
         }
-        // После выдачи начальных 28 бит – генерируем новые
         return Shift();
     }
     
-    /// Генерирует указанное количество байт ключа.
-    /// Первые 28 бит (3.5 байта) – это начальное состояние, остальные – сгенерированные.
     public byte[] GenerateKeyBytes(int byteCount)
     {
         byte[] result = new byte[byteCount];

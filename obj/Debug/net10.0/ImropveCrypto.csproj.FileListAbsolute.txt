@@ -76,3 +76,4 @@
 /Users/artemmihlin/Documents/Rider/ImropveCrypto/bin/Debug/net10.0/zh-Hans/AvaloniaEdit.resources.dll
 /Users/artemmihlin/Documents/Rider/ImropveCrypto/bin/Debug/net10.0/DialogHost.Avalonia.dll
 /Users/artemmihlin/Documents/Rider/ImropveCrypto/bin/Debug/net10.0/MsBox.Avalonia.dll
+/Users/artemmihlin/Documents/Rider/ImropveCrypto/obj/Debug/net10.0/ImropveCrypto.sourcelink.json
