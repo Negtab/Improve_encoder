@@ -6,15 +6,15 @@ X^28 + X^4 + 1
 ## О проекте
 Программа для шифрования и дешифрования текста на русском языке с помощью двух алгоритмов:
 
-### Ссылка на программу: [[https://github.com/Negtab/Column-Vigenere-Cipher/bin/Release/net10.0/win-x64/publish/Crypto.exe](https://github.com/Negtab/Column-Vigenere-Cipher/blob/master/bin/Release/net10.0/win-x64/publish/Crypto.exe)](https://github.com/Negtab/Improve_encoder/blob/master/bin/Release/net10.0/win-x64/publish/ImropveCrypto.exe)
+### Ссылка на программу: https://github.com/Negtab/Column-Vigenere-Cipher/bin/Release/net10.0/win-x64/publish/Crypto.exe
 
 ### Ссылка на папку с кодом: https://github.com/Negtab/Improve_encoder/blob/master/Models/Crypto.cs
 
-### Ссылка на отчет: 
+### Ссылка на отчет: https://github.com/Negtab/Improve_encoder/blob/master/отчет.docx
 
 ### Ссылка на папку с примерами для шифрования: https://github.com/Negtab/Improve_encoder/tree/master/Примеры
 
-### Ссылка на таблицу: 
+### Ссылка на таблицу: https://github.com/Negtab/Improve_encoder/blob/master/таблицаLFSR.xlsx
 
 # 📘 Инструкция по использованию программы
 ## Шаг 1. Введите начальное состояние ключа
