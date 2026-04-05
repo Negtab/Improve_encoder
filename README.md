@@ -6,7 +6,7 @@ X^28 + X^4 + 1
 ## О проекте
 Программа для шифрования и дешифрования текста на русском языке с помощью двух алгоритмов:
 
-### Ссылка на программу: https://github.com/Negtab/Column-Vigenere-Cipher/bin/Release/net10.0/win-x64/publish/Crypto.exe
+### Ссылка на программу: https://github.com/Negtab/Improve_encoder/blob/master/bin/Release/net10.0/win-x64/publish/ImropveCrypto.exe
 
 ### Ссылка на папку с кодом: https://github.com/Negtab/Improve_encoder/blob/master/Models/Crypto.cs
 
