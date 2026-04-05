@@ -1,0 +1,132 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ImropveCrypto.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avaloniaEdit="https://github.com/avaloniaui/avaloniaedit"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ImropveCrypto.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Width="700" Height="380"
+        Title="ImropveCrypto">
+        
+        <Window.Styles>
+                <FluentTheme />
+                <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        </Window.Styles>
+
+         <Grid RowDefinitions="Auto, Auto, Auto, Auto, *">
+                <!-- Строка с заголовками для ключей -->
+                <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Начальное состояние ключа (28 бит)" FontWeight="Bold" Margin="5,5,5,0"/>
+                        <TextBlock Grid.Column="1" Text="Сгенерированный ключ (первые 128 бит)" FontWeight="Bold" Margin="5,5,5,0"/>
+                </Grid>
+
+                <!-- Поля ввода ключей -->
+                <Grid Grid.Row="1" Height="100">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <avaloniaEdit:TextEditor x:Name="BeginKeyTextBlock"
+                                                 Grid.Column="0"
+                                                 ShowLineNumbers="False"
+                                                 WordWrap="True"
+                                                 FontFamily="Courier New"
+                                                 FontSize="12"
+                                                 Background="LightGray"
+                                                 Foreground="Black"
+                                                 BorderBrush="Black"
+                                                 BorderThickness="1"
+                                                 VerticalScrollBarVisibility="Auto"
+                                                 HorizontalScrollBarVisibility="Auto"/>
+                        
+                        <avaloniaEdit:TextEditor x:Name="GeneratedTextBlock"
+                                                 Grid.Column="1"
+                                                 IsReadOnly="True"
+                                                 ContextMenu="{x:Null}"
+                                                 ShowLineNumbers="False"
+                                                 WordWrap="True"
+                                                 FontFamily="Courier New"
+                                                 FontSize="12"
+                                                 Background="LightGray"
+                                                 Foreground="Black"
+                                                 BorderBrush="Black"
+                                                 BorderThickness="1"
+                                                 VerticalScrollBarVisibility="Auto"
+                                                 HorizontalScrollBarVisibility="Auto"/>
+                </Grid>
+                
+                <!-- Кнопки управления -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                        <Button Content="Открыть файл" Width="120" HorizontalContentAlignment="Center" Click="OpenFileClick"/>
+                        <Button x:Name="SaveFileButton" Content="Сохранить результат" Width="140" HorizontalContentAlignment="Center" Click="SaveFileClick" Margin="10,0,0,0"/>
+                </StackPanel>
+                
+                <!-- Прогресс и статус -->
+                <StackPanel Grid.Row="3" Orientation="Vertical">
+                        <TextBlock Text="Прогресс шифрования:" Margin="5,5,0,0"/>
+                        <ProgressBar x:Name="ProgressBar" 
+                                 Height="20" 
+                                 Margin="5,5,5,0" 
+                                 Minimum="0" 
+                                 Maximum="100" 
+                                 Value="0" />
+                        <TextBlock x:Name="EncryptedFileTextBlock" Margin="5,5,0,5"/>
+                </StackPanel>
+
+                <!-- Заголовки для исходного и зашифрованного файлов -->
+                <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Исходный файл (первые 128 бит)" FontWeight="Bold" Margin="5,5,5,0"/>
+                        <TextBlock Grid.Column="1" Text="Зашифрованный файл (первые 128 бит)" FontWeight="Bold" Margin="5,5,5,0"/>
+                </Grid>
+
+                <!-- Текстовые редакторы для отображения битов -->
+                <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <avaloniaEdit:TextEditor x:Name="FileTextBlock"
+                                                 Grid.Column="0"
+                                                 IsReadOnly="True"
+                                                 ContextMenu="{x:Null}"
+                                                 ShowLineNumbers="False"
+                                                 WordWrap="True"
+                                                 FontFamily="Courier New"
+                                                 FontSize="12"
+                                                 Background="LightGray"
+                                                 Foreground="Black"
+                                                 BorderBrush="Black"
+                                                 BorderThickness="1"
+                                                 VerticalScrollBarVisibility="Auto"
+                                                 HorizontalScrollBarVisibility="Auto"/>
+
+                        <avaloniaEdit:TextEditor x:Name="EncryptedTextEditor"
+                                                 Grid.Column="1"
+                                                 IsReadOnly="True"
+                                                 ContextMenu="{x:Null}"
+                                                 ShowLineNumbers="False"
+                                                 WordWrap="False"
+                                                 FontFamily="Courier New"
+                                                 FontSize="12"
+                                                 Background="LightGray"
+                                                 Foreground="Black"
+                                                 BorderBrush="Black"
+                                                 BorderThickness="1"
+                                                 VerticalScrollBarVisibility="Auto"
+                                                 HorizontalScrollBarVisibility="Auto"/>
+                </Grid>
+        </Grid>
+</Window>
