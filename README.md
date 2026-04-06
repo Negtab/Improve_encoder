@@ -9,6 +9,7 @@ X^28 + X^4 + 1
 ### Ссылка на программу: https://github.com/Negtab/Improve_encoder/blob/master/bin/Release/net10.0/win-x64/publish/ImropveCrypto.exe
 
 ### Ссылка на папку с кодом: https://github.com/Negtab/Improve_encoder/blob/master/Models/Crypto.cs
+https://github.com/Negtab/Improve_encoder/blob/master/Views/MainWindow.axaml.cs
 
 ### Ссылка на отчет: https://github.com/Negtab/Improve_encoder/blob/master/отчет.docx
 
