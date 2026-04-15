@@ -10,7 +10,7 @@ public class Crypto
     private bool _initialEmitted;          // флаг, что всё начальное состояние выдано
 
     private readonly int _tap1 = 27;
-    private readonly int _tap2 = 3;  
+    private readonly int _tap2 = 2;  
     
     public Crypto(byte[] initialState)
     {

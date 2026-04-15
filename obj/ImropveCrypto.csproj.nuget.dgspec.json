@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/artemmihlin/Documents/Rider/ImropveCrypto/ImropveCrypto.csproj": {}
+    "/Users/artemmihlin/Documents/Labs/Rider/ImropveCrypto/ImropveCrypto.csproj": {}
   },
   "projects": {
-    "/Users/artemmihlin/Documents/Rider/ImropveCrypto/ImropveCrypto.csproj": {
+    "/Users/artemmihlin/Documents/Labs/Rider/ImropveCrypto/ImropveCrypto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/artemmihlin/Documents/Rider/ImropveCrypto/ImropveCrypto.csproj",
+        "projectUniqueName": "/Users/artemmihlin/Documents/Labs/Rider/ImropveCrypto/ImropveCrypto.csproj",
         "projectName": "ImropveCrypto",
-        "projectPath": "/Users/artemmihlin/Documents/Rider/ImropveCrypto/ImropveCrypto.csproj",
+        "projectPath": "/Users/artemmihlin/Documents/Labs/Rider/ImropveCrypto/ImropveCrypto.csproj",
         "packagesPath": "/Users/artemmihlin/.nuget/packages/",
-        "outputPath": "/Users/artemmihlin/Documents/Rider/ImropveCrypto/obj/",
+        "outputPath": "/Users/artemmihlin/Documents/Labs/Rider/ImropveCrypto/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/artemmihlin/.nuget/NuGet/NuGet.Config"

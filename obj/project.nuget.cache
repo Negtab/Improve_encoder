@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oOsgWt+ErgA=",
+  "dgSpecHash": "M7krNy06hus=",
   "success": true,
-  "projectFilePath": "/Users/artemmihlin/Documents/Rider/ImropveCrypto/ImropveCrypto.csproj",
+  "projectFilePath": "/Users/artemmihlin/Documents/Labs/Rider/ImropveCrypto/ImropveCrypto.csproj",
   "expectedPackageFiles": [
     "/Users/artemmihlin/.nuget/packages/avalonia/11.3.12/avalonia.11.3.12.nupkg.sha512",
     "/Users/artemmihlin/.nuget/packages/avalonia.angle.windows.natives/2.1.25547.20250602/avalonia.angle.windows.natives.2.1.25547.20250602.nupkg.sha512",

@@ -10,11 +10,6 @@
         Icon="/Assets/avalonia-logo.ico"
         Width="700" Height="380"
         Title="ImropveCrypto">
-        
-        <Window.Styles>
-                <FluentTheme />
-                <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
-        </Window.Styles>
 
          <Grid RowDefinitions="Auto, Auto, Auto, Auto, *">
                 <Grid Grid.Row="0">

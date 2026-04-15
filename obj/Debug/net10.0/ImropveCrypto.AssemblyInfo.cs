@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ImropveCrypto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5705225ac8bba1dde607335e131e67c7e2ff9f6c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+381b9594cfb22d84dc8cf6796473c3723d72eb27")]
 [assembly: System.Reflection.AssemblyProductAttribute("ImropveCrypto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ImropveCrypto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
